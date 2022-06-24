@@ -13,12 +13,12 @@ mongoose
         console.error('Error al conectarse con Mongo',err.reason)
     })
 //configuracion del servidor web
-const empleadoRuta=require('../backEnd/routes/empleado.route')
+const empleadoRuta=require('../backEnd/routes/empleados.route')
 const app=express()
 
 app.use(bodyParser.json())
 app.use(
-    bodyParser.urlenocded({
+    bodyParser.urlencoded({
         extended:false,
     })
 )

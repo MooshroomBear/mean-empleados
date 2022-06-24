@@ -1,4 +1,4 @@
-const mongoose=require('mongooe')
+const mongoose=require('mongoose')
 const Schema =mongoose.Schema
 
 let Empleado = new Schema({

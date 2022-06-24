@@ -1,0 +1,61 @@
+<h2>Editar empleado</h2>
+
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <div class="card-body">
+            <form [formGroup]="editarForm"(ngSubmit)="onSubmit()">
+               <!--Mensaje de error-->
+                <div class="form-group">
+                    <label for="nombre">Nombre: </label>
+                    <input type="text" class="form-control" formControl="nombre"/>
+
+                    <div style="color: red;" *ngIf="enviado && myForm['nombre'].errors?.['required']">
+                        este campo es obligatorio
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="departamento">Departamento: </label>
+                    <select class="custom-select form-control"
+                    (change)="actualizarDepartamento($event.target.value)"
+                    formControlName="departamento">
+                    <option value="">selecciona un departamento...</option>
+                    <option *ngFor="let departamento of empleadoDepartamento" value="{{departamento}}">{{departamento}}</option>
+                    
+                    </select>
+                </div>
+                <div style="color: red;" *ngIf="enviado && myForm['departamento'].errors?.['required']">
+                    este campo es obligatorio
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-Mail: </label>
+                    <input type="text" class="form-control" formControlName="email"/>
+                </div>
+                <div style="color: red;" *ngIf="enviado && myForm['email'].errors?.['required']">
+                    este campo es obligatorio
+                </div>
+                <div style="color: red;" *ngIf="enviado && myForm['email'].errors?.['pattern']">
+                    El email no es valido
+                </div>
+
+                <div class="form-group">
+                    <label for="telefono">Telefono: </label>
+                    <input type="number" class="form-control" formControlName="telefono"/>
+
+                </div>
+                <div style="color: red;" *ngIf="enviado && myForm['email'].errors?.['required']">
+                    este campo es obligatorio
+                </div>
+                <div style="color: red;" *ngIf="enviado && myForm['telefono'].errors?.['pattern']">
+                    Solo numeros porfa!
+                </div>     
+
+                <div class="form-group">
+                    <button class="btn btn-success btn-lg btn-block" type="submit">Guardar</button>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+</div>
